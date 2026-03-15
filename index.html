@@ -115,7 +115,6 @@
       50%{opacity:.78}
     }
 
-    /* DESKTOP BASE */
     .app{
       position:fixed;
       left:50%;
@@ -918,7 +917,6 @@
       touch-action:manipulation;
     }
 
-    /* MOBILE LAYOUT */
     body[data-layout="mobile"] .app{
       position:fixed;
       inset:0;
@@ -1460,8 +1458,11 @@
     }
 
     function getScoreLog(){
-      try{ return JSON.parse(localStorage.getItem(SCORE_LOG_KEY) || "[]"); }
-      catch(e){ return []; }
+      try{
+        return JSON.parse(localStorage.getItem(SCORE_LOG_KEY) || "[]");
+      }catch(e){
+        return [];
+      }
     }
 
     function setScoreLog(v){
@@ -1596,7 +1597,9 @@
     }
 
     function gcd(a,b){
-      while(b){ [a,b]=[b,a%b]; }
+      while(b){
+        [a,b] = [b,a%b];
+      }
       return a;
     }
 
@@ -1691,7 +1694,10 @@
 
     function polarToCartesian(cx, cy, r, angleDeg){
       const angleRad = (angleDeg - 90) * Math.PI / 180;
-      return { x: cx + r * Math.cos(angleRad), y: cy + r * Math.sin(angleRad) };
+      return {
+        x: cx + r * Math.cos(angleRad),
+        y: cy + r * Math.sin(angleRad)
+      };
     }
 
     function wedgePath(cx, cy, r, startAngle, endAngle){
@@ -1782,8 +1788,12 @@
         const mid = s + anglePer/2;
         const p1 = polarToCartesian(cx, cy, cheeseRadius * 0.56, mid);
         pizzaSvg.appendChild(svgEl("circle",{
-          cx:p1.x, cy:p1.y, r:Math.max(7, 18 - currentQuestion.pizzaSlices * 0.45),
-          fill:"#c63d1f", stroke:"#8f2411", "stroke-width":2
+          cx:p1.x,
+          cy:p1.y,
+          r:Math.max(7, 18 - currentQuestion.pizzaSlices * 0.45),
+          fill:"#c63d1f",
+          stroke:"#8f2411",
+          "stroke-width":2
         }));
       }
     }
@@ -1990,7 +2000,7 @@
           Current assessment total: ${assessmentScore}/15<br>
           Levels counted so far: ${Object.entries(perLevelAssessment)
             .filter(([k])=> Number(k) <= currentLevel)
-            .map(([k,v])=>\`L\${k}: \${v}/5\`)
+            .map(([k,v])=>`L${k}: ${v}/5`)
             .join("<br>")}
         `;
         roundLine.textContent = "Good work. The next level will be harder.";
@@ -2043,9 +2053,21 @@
       const next = document.getElementById("roundNextBtn");
       const bonus = document.getElementById("roundBonusBtn");
       const replay = document.getElementById("roundReplayBtn");
-      if(next) next.onclick = ()=>{ roundModal.classList.remove("show"); startLevel(currentLevel + 1); };
-      if(bonus) bonus.onclick = ()=>{ roundModal.classList.remove("show"); startLevel(5); };
-      if(replay) replay.onclick = ()=>{ roundModal.classList.remove("show"); resetGameFlow(); };
+
+      if(next) next.onclick = ()=>{
+        roundModal.classList.remove("show");
+        startLevel(currentLevel + 1);
+      };
+
+      if(bonus) bonus.onclick = ()=>{
+        roundModal.classList.remove("show");
+        startLevel(5);
+      };
+
+      if(replay) replay.onclick = ()=>{
+        roundModal.classList.remove("show");
+        resetGameFlow();
+      };
     }
 
     function startLevel(levelNo){
@@ -2098,7 +2120,7 @@
         Questions: ${lv.q}<br>
         Fractions: ${lv.fractions.join(", ")}<br>
         Slice counts: ${lv.slices.join(", ")}<br>
-        ${lv.timer ? \`Timer: ${lv.timer} seconds<br>\` : "Timer: None<br>"}
+        ${lv.timer ? `Timer: ${lv.timer} seconds<br>` : "Timer: None<br>"}
         <br>
         <strong>${lv.counted ? "This level counts for SLS." : "This level does not count for SLS."}</strong>
         ${lv.bonus ? "<br><strong>Bonus only.</strong>" : ""}
