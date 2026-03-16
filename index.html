@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
   <title>Pizza Café — Equivalent Fractions</title>
-  <link rel="icon" href="kimsze_sharp.ico" type="image/x-icon">
+  <link rel="icon" href="kimsze_sharp.ico" type="image/x-icon" />
 
   <style>
     :root{
@@ -17,8 +20,10 @@
       --good:#1f7a2e;
       --bad:#b42318;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
       font-family:"Comic Sans MS","Comic Sans",cursive,sans-serif;
@@ -45,7 +50,9 @@
       background:linear-gradient(180deg,#2a1208 0%, #140804 60%, #090303 100%);
       padding:12px;
     }
+
     .cover.hidden{display:none}
+
     .cover-card{
       width:min(calc(100% - 40px),980px);
       background:linear-gradient(180deg,#fff8ef,#ffe7c9);
@@ -56,6 +63,7 @@
       box-shadow:0 18px 40px rgba(0,0,0,.32);
       margin:0 auto;
     }
+
     .cover-card img{
       width:min(100%,820px);
       max-height:min(340px,40svh);
@@ -66,16 +74,19 @@
       border:4px solid var(--brown);
       background:#111;
     }
+
     .cover h1{
       margin:6px 0 0;
       font-size:clamp(1.7rem,3vw,2.9rem);
       color:#a94e12;
     }
+
     .cover p{
       margin:4px 0 10px;
       font-size:1rem;
       font-weight:900;
     }
+
     .cover-tip{
       font-size:15px;
       font-weight:800;
@@ -87,6 +98,7 @@
       padding:10px 14px;
       margin:0 auto 10px;
     }
+
     .start-btn{
       min-width:220px;
       padding:13px 24px;
@@ -98,6 +110,7 @@
       cursor:pointer;
       animation:blinkStart 1.2s infinite;
     }
+
     @keyframes blinkStart{
       0%,100%{opacity:1}
       50%{opacity:.78}
@@ -105,17 +118,14 @@
 
     .app{
       position:fixed;
-      left:50%;
-      top:6px;
-      width:1780px;
-      height:980px;
+      inset:8px 12px 8px 12px;
+      width:auto;
+      height:auto;
       margin:0;
-      padding:6px 8px 8px;
+      padding:8px 10px 10px;
       display:flex;
       flex-direction:column;
-      gap:8px;
-      transform:translateX(-50%) scale(var(--app-scale,1));
-      transform-origin:top center;
+      gap:10px;
     }
 
     .topbar{
@@ -129,23 +139,28 @@
       border-radius:18px;
       padding:6px 10px;
       box-shadow:var(--shadow);
+      flex:0 0 auto;
     }
+
     .title{
       font-size:clamp(1.15rem,1.4vw,1.7rem);
       font-weight:900;
       line-height:1;
     }
+
     .sub{
       font-size:11px;
       font-weight:700;
       opacity:.85;
     }
+
     .wrap{
       display:flex;
       gap:6px;
       flex-wrap:wrap;
       align-items:center;
     }
+
     .pill,.btn-chip{
       background:#fff3df;
       border:2.5px solid var(--brown);
@@ -154,6 +169,7 @@
       font-weight:900;
       font-size:12px;
     }
+
     .btn-chip{cursor:pointer}
     .timer.warn{background:#ffe0d8;color:#a11a1a}
 
@@ -176,7 +192,9 @@
       animation:hotPulse .7s infinite;
       flex:0 0 auto;
     }
+
     .hot-streak-banner.show{display:flex}
+
     @keyframes hotPulse{
       0%,100%{transform:scale(1)}
       50%{transform:scale(1.03)}
@@ -188,11 +206,14 @@
       flex-direction:column;
       gap:4px;
       align-items:center;
+      flex:0 0 auto;
     }
+
     .ticket-label{
       font-weight:900;
       font-size:13px;
     }
+
     .tickets{
       display:flex;
       gap:5px;
@@ -206,6 +227,7 @@
       width:min(100%,520px);
       box-shadow:0 4px 0 rgba(123,75,42,.08);
     }
+
     .ticket{
       width:24px;
       height:28px;
@@ -220,6 +242,7 @@
       box-shadow:0 2px 0 rgba(123,75,42,.08);
       position:relative;
     }
+
     .ticket::before,.ticket::after{
       content:"";
       position:absolute;
@@ -230,6 +253,7 @@
       top:50%;
       transform:translateY(-50%);
     }
+
     .ticket::before{left:-6px}
     .ticket::after{right:-6px}
     .ticket.pending{background:#fff}
@@ -243,12 +267,15 @@
       flex-direction:column;
       gap:4px;
       margin-inline:auto;
+      flex:0 0 auto;
     }
+
     .progress-label{
       text-align:center;
       font-weight:900;
       font-size:13px;
     }
+
     .progress-bar{
       width:100%;
       height:14px;
@@ -258,6 +285,7 @@
       overflow:hidden;
       box-shadow:0 4px 0 rgba(123,75,42,.08);
     }
+
     .progress-fill{
       width:0%;
       height:100%;
@@ -268,11 +296,13 @@
 
     .main{
       display:grid;
-      grid-template-columns:360px minmax(0,1fr) 360px;
-      gap:8px;
+      grid-template-columns:clamp(280px,20vw,360px) minmax(700px,1fr) clamp(280px,20vw,360px);
+      gap:10px;
       flex:1 1 auto;
       min-height:0;
+      align-items:stretch;
     }
+
     .panel{
       background:var(--panel);
       border:3px solid var(--brown);
@@ -282,11 +312,13 @@
       min-height:0;
       overflow:auto;
     }
+
     .panel h2{
       margin:0 0 6px;
       text-align:center;
       font-size:.92rem;
     }
+
     .side{
       display:grid;
       grid-template-rows:auto auto auto 1fr;
@@ -295,16 +327,18 @@
       overflow:auto;
       padding-right:2px;
     }
+
     .character{
       width:100%;
-      max-width:315px;
-      height:150px;
+      max-width:100%;
+      height:180px;
       object-fit:contain;
       display:block;
       margin:0 auto;
       border-radius:14px;
       background:#f2f2f2;
     }
+
     .tag{
       display:inline-flex;
       justify-self:center;
@@ -318,6 +352,7 @@
       font-weight:900;
       font-size:13px;
     }
+
     .card{
       background:var(--cream);
       border:3px solid var(--brown);
@@ -326,15 +361,18 @@
       text-align:center;
       box-shadow:0 6px 0 rgba(123,75,42,.08);
     }
+
     .dialogue,.bubble,.note{
       font-size:13px;
       font-weight:800;
       line-height:1.2;
     }
+
     .dialogue{
       min-height:24px;
       color:#8a4f18;
     }
+
     .bubble{
       background:var(--cream);
       border:3px solid var(--brown);
@@ -346,6 +384,7 @@
       justify-content:center;
       text-align:center;
     }
+
     .note{
       background:#fff3df;
       border:2.5px dashed var(--brown);
@@ -353,10 +392,12 @@
       padding:8px 10px;
       text-align:center;
     }
+
     .order-line{
       font-size:13px;
       font-weight:800;
     }
+
     .help-line{
       margin-top:6px;
       font-size:12px;
@@ -371,12 +412,14 @@
       justify-content:center;
       line-height:1;
     }
+
     .frac .num,.frac .den{
       font-size:2rem;
       font-weight:900;
       color:#c63d1f;
       padding:0 6px;
     }
+
     .frac .bar{
       width:100%;
       min-width:30px;
@@ -385,11 +428,13 @@
       border-radius:99px;
       margin:3px 0;
     }
+
     .frac-sm .num,.frac-sm .den{
       font-size:16px;
       font-weight:900;
       padding:0 5px;
     }
+
     .frac-sm .bar{
       width:100%;
       min-width:28px;
@@ -398,11 +443,13 @@
       border-radius:99px;
       margin:2px 0;
     }
+
     .frac-lg .num,.frac-lg .den{
       font-size:24px;
       font-weight:900;
       padding:0 6px;
     }
+
     .frac-lg .bar{
       width:100%;
       min-width:34px;
@@ -417,20 +464,21 @@
       flex-direction:column;
       align-items:center;
       justify-content:space-between;
-      gap:6px;
+      gap:8px;
       height:100%;
     }
+
     .pizza-stage{
       position:relative;
-      width:min(100%,580px);
-      height:min(100%,420px);
-      aspect-ratio:auto;
+      width:min(100%,900px);
+      height:min(100%,520px);
       flex:1 1 auto;
-      min-height:0;
+      min-height:420px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
+
     .board{
       position:absolute;
       inset:4%;
@@ -444,6 +492,7 @@
       border:8px solid #8e5e2f;
       box-shadow:inset 0 0 0 8px rgba(255,255,255,.15), 0 10px 18px rgba(0,0,0,.15);
     }
+
     .pizza-sparkle{
       position:absolute;
       inset:9%;
@@ -458,22 +507,34 @@
       transition:opacity .25s ease;
       mix-blend-mode:screen;
     }
-    .pizza-sparkle.show{opacity:1;animation:sparkleFlash .7s ease forwards;}
+
+    .pizza-sparkle.show{
+      opacity:1;
+      animation:sparkleFlash .7s ease forwards;
+    }
+
     @keyframes sparkleFlash{
       0%{opacity:0;transform:scale(.96)}
       25%{opacity:1;transform:scale(1)}
       70%{opacity:.9;transform:scale(1.02)}
       100%{opacity:0;transform:scale(1)}
     }
+
     svg#pizzaSvg{
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
     }
-    .slice{cursor:pointer;transition:.15s ease}
+
+    .slice{
+      cursor:pointer;
+      transition:.15s ease;
+    }
+
     .slice:hover{filter:brightness(1.06)}
     .slice.selected{fill:#bdbdbd !important;filter:grayscale(1)}
+
     .slice.hint{
       stroke:#2b7de9 !important;
       stroke-width:6 !important;
@@ -489,8 +550,11 @@
       padding:8px 10px;
       text-align:center;
       font-weight:900;
+      flex:0 0 auto;
     }
+
     .grouping.show{display:block}
+
     .groups{
       display:flex;
       justify-content:center;
@@ -498,6 +562,7 @@
       flex-wrap:wrap;
       margin-top:6px;
     }
+
     .group-box{
       min-width:54px;
       padding:8px 10px;
@@ -513,17 +578,21 @@
       flex-direction:column;
       align-items:center;
       gap:4px;
+      flex:0 0 auto;
     }
+
     .plate-wrap{
-      width:300px;
+      width:360px;
       max-width:100%;
       aspect-ratio:1/.72;
     }
+
     svg#plateSvg{
       width:100%;
       height:100%;
       display:block;
     }
+
     .served{
       font-size:14px;
       font-weight:900;
@@ -534,7 +603,9 @@
       justify-content:center;
       gap:10px;
       flex-wrap:wrap;
+      flex:0 0 auto;
     }
+
     .game-btn{
       min-width:100px;
       padding:10px 14px;
@@ -546,30 +617,34 @@
       font-weight:900;
       color:#5f361d;
     }
+
     .game-btn:disabled{
       opacity:.55;
       cursor:not-allowed;
       filter:grayscale(.15);
     }
+
     .btn-check{background:#dff7df}
     .btn-clear{background:#ffe6cc}
     .btn-next{background:#ece4ff}
     .btn-hint{background:#fff4c7}
 
     .feedback{
-      min-height:34px;
+      min-height:48px;
       background:var(--panel);
       border:3px solid var(--brown);
       border-radius:14px;
       box-shadow:var(--shadow);
-      padding:6px 10px;
+      padding:8px 12px;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      font-size:12px;
+      font-size:14px;
       font-weight:900;
+      flex:0 0 auto;
     }
+
     .feedback.good{color:var(--good)}
     .feedback.bad{color:var(--bad)}
 
@@ -580,7 +655,9 @@
       gap:10px;
       margin-top:2px;
       min-height:38px;
+      flex:0 0 auto;
     }
+
     .meta-actions{
       display:flex;
       align-items:center;
@@ -597,7 +674,9 @@
       background:rgba(70,40,20,.45);
       z-index:100;
     }
+
     .modal.show{display:flex}
+
     .modal-card{
       width:min(calc(100% - 24px),760px);
       max-height:min(88vh,820px);
@@ -609,12 +688,14 @@
       padding:22px 20px;
       text-align:center;
     }
+
     .modal-title{
       font-size:38px;
       font-weight:900;
       color:#b85b18;
       margin-bottom:10px;
     }
+
     .modal-badge{
       display:inline-block;
       padding:14px 22px;
@@ -625,12 +706,14 @@
       font-weight:900;
       margin:10px 0 16px;
     }
+
     .modal-line{
       font-size:22px;
       font-weight:800;
       line-height:1.3;
       margin-bottom:12px;
     }
+
     .report{
       width:min(100%,620px);
       margin:0 auto 18px;
@@ -643,6 +726,7 @@
       font-weight:800;
       line-height:1.45;
     }
+
     .modal-actions{
       display:flex;
       justify-content:center;
@@ -663,7 +747,9 @@
       box-shadow:0 10px 0 rgba(123,75,42,.12);
       animation:easterPop .8s ease;
     }
+
     .easter-egg.show{display:block}
+
     .easter-title{
       font-size:24px;
       font-weight:900;
@@ -671,12 +757,14 @@
       margin-bottom:6px;
       text-shadow:0 2px 0 rgba(255,255,255,.35);
     }
+
     .easter-line{
       font-size:16px;
       font-weight:900;
       line-height:1.35;
       color:#5f361d;
     }
+
     .easter-badge{
       display:inline-block;
       margin-top:8px;
@@ -687,6 +775,7 @@
       font-size:18px;
       font-weight:900;
     }
+
     .easter-close{
       position:absolute;
       top:8px;
@@ -696,6 +785,7 @@
       font-size:12px;
       line-height:1;
     }
+
     #easterEggGraphic{
       display:block;
       width:min(100%,180px);
@@ -706,6 +796,7 @@
       border-radius:16px;
       background:#fff8eb;
     }
+
     @keyframes easterPop{
       0%{transform:scale(.85);opacity:0}
       70%{transform:scale(1.04);opacity:1}
@@ -721,6 +812,7 @@
       border-radius:16px;
       background:#fff;
     }
+
     .last-user{
       background:#fff8eb;
       border:3px solid var(--brown);
@@ -730,7 +822,9 @@
       width:min(100%,420px);
       display:none;
     }
+
     .last-user.show{display:block}
+
     .last-user-name{
       font-size:24px;
       font-weight:900;
@@ -752,13 +846,16 @@
       z-index:90;
       display:none;
     }
+
     .dashboard.show{display:block}
+
     .dash-title{
       font-size:24px;
       font-weight:900;
       text-align:center;
       margin-bottom:10px;
     }
+
     .dash-box{
       background:#fff8eb;
       border:3px solid var(--brown);
@@ -766,10 +863,12 @@
       padding:10px;
       margin-bottom:12px;
     }
+
     .dash-box h3{
       margin:0 0 8px;
       font-size:20px;
     }
+
     .score-log-list{
       background:#fff;
       border:3px solid var(--brown);
@@ -778,6 +877,7 @@
       max-height:260px;
       overflow:auto;
     }
+
     .score-row{
       display:grid;
       grid-template-columns:48px 1fr 90px 110px;
@@ -788,6 +888,7 @@
       font-weight:800;
       font-size:15px;
     }
+
     .score-row:last-child{border-bottom:none}
 
     .dashboard-btn,.teacher-btn{
@@ -816,6 +917,7 @@
       z-index:95;
       display:none;
     }
+
     .teacher-panel.show{display:block}
     .teacher-opt.active,.hint-opt.active{background:#dff7df}
 
@@ -839,6 +941,7 @@
       overflow:hidden;
       z-index:130;
     }
+
     .confetti-piece{
       position:fixed;
       top:-30px;
@@ -848,15 +951,32 @@
       animation-timing-function:linear;
       animation-fill-mode:forwards;
     }
+
     @keyframes confettiFall{
       0%{transform:translateY(-30px) rotate(0deg);opacity:1}
       100%{transform:translateY(110vh) rotate(720deg);opacity:1}
     }
 
-    @media (max-width:700px){
+    @media (max-width:1100px){
+      .main{
+        grid-template-columns:300px minmax(0,1fr) 300px;
+      }
+    }
+
+    @media (max-width:900px){
+      body{overflow:auto}
+      .app{
+        position:relative;
+        inset:auto;
+        min-height:100vh;
+      }
       .main{grid-template-columns:1fr}
       .character{max-width:240px;height:150px}
-      .pizza-stage{width:min(100%,84vw);height:min(100%,84vw)}
+      .pizza-stage{
+        width:min(100%,84vw);
+        height:min(100%,84vw);
+        min-height:320px;
+      }
       .modal-title{font-size:28px}
       .modal-badge{font-size:20px}
       .modal-line,.report,.feedback,.bubble,.note,.dialogue,.cover-tip,.easter-line{font-size:16px}
@@ -867,7 +987,6 @@
   </style>
 </head>
 <body class="cover-open">
-
   <div class="cover" id="coverScreen">
     <div class="cover-card">
       <img src="pizza_cafe_cover.png" alt="Pizza Café Cover">
@@ -944,6 +1063,7 @@
       <main class="panel">
         <div class="center">
           <h2>Pizza Board</h2>
+
           <div class="pizza-stage">
             <div class="board"></div>
             <div class="pizza-sparkle" id="pizzaSparkle"></div>
@@ -968,7 +1088,7 @@
       <aside class="panel">
         <div class="side">
           <h2>Chef</h2>
-          <img src="chef.png" alt="Chef" class="character">
+          <img id="chefPhoto" src="chef.png" alt="Chef" class="character">
           <div class="bubble" id="chefBubble">Click slices on the pizza, then press Check.</div>
           <div class="note">Current mission: <span id="missionText">Practise at Level 1.</span></div>
           <div class="note">Best device score: <span id="bestScoreText">0</span> | Best streak: <span id="bestStreakText">0</span></div>
@@ -1125,6 +1245,7 @@
       "New customer! No pressure... just delicious fractions.",
       "Another order! Let’s slice with style!"
     ];
+
     const rightChefLines = [
       "Ha! That order was hotter than my pizza oven!",
       "Bing bong! Chef genius at work!",
@@ -1133,6 +1254,7 @@
       "Perfect! The customer might ask for my autograph now!",
       "Sizzling success! That pizza never stood a chance!"
     ];
+
     const wrongChefLines = [
       "Uh-oh... my moustache would be worried if I had one!",
       "Oopsy cheese! That slice count went on holiday!",
@@ -1179,6 +1301,7 @@
     const customerDialogue = document.getElementById("customerDialogue");
     const orderFraction = document.getElementById("orderFraction");
     const sliceCountText = document.getElementById("sliceCountText");
+    const chefPhoto = document.getElementById("chefPhoto");
     const chefBubble = document.getElementById("chefBubble");
     const servedCount = document.getElementById("servedCount");
     const servedEquation = document.getElementById("servedEquation");
@@ -1250,6 +1373,7 @@
     function getPlayerName(){
       return localStorage.getItem(PLAYER_NAME_KEY) || "";
     }
+
     function setPlayerName(name){
       localStorage.setItem(PLAYER_NAME_KEY, name);
       playerNameText.textContent = name || "Chef";
@@ -1260,6 +1384,7 @@
     function getBestScore(){
       return Number(localStorage.getItem(BEST_SCORE_KEY) || 0);
     }
+
     function setBestScore(v){
       if(v > getBestScore()) localStorage.setItem(BEST_SCORE_KEY, String(v));
       bestScoreText.textContent = getBestScore();
@@ -1268,18 +1393,32 @@
     function getBestStreak(){
       return Number(localStorage.getItem(BEST_STREAK_KEY) || 0);
     }
+
     function setBestStreak(v){
       if(v > getBestStreak()) localStorage.setItem(BEST_STREAK_KEY, String(v));
       bestStreakText.textContent = getBestStreak();
+    }
+
+    function setChefMood(mood="neutral"){
+      if(!chefPhoto) return;
+      if(mood === "happy"){
+        chefPhoto.src = "chef_happy.png";
+      } else if(mood === "sad"){
+        chefPhoto.src = "chef_sad.png";
+      } else {
+        chefPhoto.src = "chef.png";
+      }
     }
 
     function getScoreLog(){
       try{return JSON.parse(localStorage.getItem(SCORE_LOG_KEY) || "[]");}
       catch(e){return [];}
     }
+
     function setScoreLog(v){
       localStorage.setItem(SCORE_LOG_KEY, JSON.stringify(v));
     }
+
     function addScoreLogEntry(entry){
       const log = getScoreLog();
       log.unshift(entry);
@@ -1287,6 +1426,7 @@
       setScoreLog(log);
       renderScoreLog();
     }
+
     function clearScoreLog(){
       localStorage.removeItem(SCORE_LOG_KEY);
       renderScoreLog();
@@ -1332,16 +1472,19 @@
       audio.currentTime = 0;
       audio.play().catch(()=>{});
     }
+
     function playOpeningLoop(){
       if(!soundOn || !audioUnlocked || !openingAudio) return;
       openingAudio.currentTime = 0;
       openingAudio.play().catch(()=>{});
     }
+
     function stopOpeningLoop(){
       if(!openingAudio) return;
       openingAudio.pause();
       openingAudio.currentTime = 0;
     }
+
     function unlockAudio(){
       if(audioUnlocked) return;
       audioUnlocked = true;
@@ -1605,6 +1748,7 @@
         selectedSliceIds.add(id);
         el.classList.add("selected");
       }
+
       updateServed();
       feedback.className = "feedback";
       feedback.textContent = streak > 1 ? `Keep going! Hot streak: ${streak}` : "Keep going, Chef!";
@@ -1621,6 +1765,7 @@
       currentCustomer = randomCustomer();
       questionResolved = false;
       pausedByNameModal = false;
+      setChefMood("neutral");
       orderFraction.innerHTML = fractionHTML(currentQuestion.numerator, currentQuestion.denominator);
       sliceCountText.textContent = currentQuestion.pizzaSlices;
       customerPhoto.src = currentCustomer.image;
@@ -1650,14 +1795,17 @@
         chefBubble.textContent = "Hints are switched off by Teacher Setup.";
         return;
       }
+
       hintsUsed++;
       renderGrouping();
       groupPanel.classList.add("show");
       clearHints();
+
       for(let i=0;i<currentQuestion.correctPieces;i++){
         const el = pizzaSvg.querySelector(`.slice[data-id="${i}"]`);
         if(el) el.classList.add("hint");
       }
+
       chefBubble.textContent = `Try this: ${currentQuestion.pizzaSlices} ÷ ${currentQuestion.denominator}, then multiply by ${currentQuestion.numerator}.`;
       feedback.className = "feedback";
       feedback.textContent = "💡 Hint shown.";
@@ -1716,6 +1864,7 @@
       questionResolved = true;
       streak = 0;
       markTicket("wrong");
+      setChefMood("sad");
       feedback.className = "feedback bad";
       feedback.innerHTML = `⏱ Time’s up! Correct answer: ${fractionHTML(currentQuestion.correctPieces, currentQuestion.pizzaSlices, "frac-sm")}`;
       chefBubble.textContent = "The oven timer rang before we finished!";
@@ -1746,6 +1895,7 @@
         bestStreakRound = Math.max(bestStreakRound, streak);
         setBestStreak(bestStreakRound);
         markTicket("correct");
+        setChefMood("happy");
         feedback.className = "feedback good";
         feedback.innerHTML = `✅ Correct! ${fractionHTML(currentQuestion.numerator, currentQuestion.denominator, "frac-sm")} = ${fractionHTML(currentQuestion.correctPieces, currentQuestion.pizzaSlices, "frac-lg")}`;
         chefBubble.textContent = rightChefLines[Math.floor(Math.random()*rightChefLines.length)];
@@ -1755,6 +1905,7 @@
       } else {
         streak = 0;
         markTicket("wrong");
+        setChefMood("sad");
         feedback.className = "feedback bad";
         feedback.innerHTML = `❌ Not yet. ${fractionHTML(currentQuestion.numerator, currentQuestion.denominator, "frac-sm")} = ${fractionHTML(currentQuestion.correctPieces, currentQuestion.pizzaSlices, "frac-sm")}`;
         chefBubble.textContent = wrongChefLines[Math.floor(Math.random()*wrongChefLines.length)];
@@ -1763,6 +1914,7 @@
 
       if(streak >= 3) hotStreakBanner.classList.add("show");
       else hotStreakBanner.classList.remove("show");
+
       updateTop();
       syncActionButtons();
     }
@@ -1782,6 +1934,7 @@
         finishLevel();
         return;
       }
+
       loadQuestion();
     }
 
@@ -1959,6 +2112,7 @@
       assessmentScore = 0;
       perLevelAssessment = {2:0,3:0,4:0};
       hotStreakBanner.classList.remove("show");
+      setChefMood("neutral");
       startLevel(1);
     }
 
@@ -2034,27 +2188,16 @@
       }
     }
 
-    function fitApp(){
-      const designW = 1780;
-      const designH = 980;
-      const pad = 12;
-      const scale = Math.min(
-        (window.innerWidth - pad) / designW,
-        (window.innerHeight - pad) / designH
-      );
-      document.documentElement.style.setProperty("--app-scale", Math.min(1, scale).toFixed(4));
-    }
-
     document.getElementById("coverStartBtn").addEventListener("click", ()=>{
       unlockAudio();
       playOpeningLoop();
       document.body.classList.remove("cover-open");
       coverScreen.classList.add("hidden");
-      fitApp();
       openNameModal();
     });
 
     document.getElementById("saveNameBtn").addEventListener("click", savePlayerAndContinue);
+
     document.getElementById("useLastNameBtn").addEventListener("click", ()=>{
       playerNameInput.value = getPlayerName() || "Chef";
       savePlayerAndContinue();
@@ -2087,6 +2230,7 @@
       feedback.className = "feedback";
       feedback.textContent = "Selection cleared.";
       chefBubble.textContent = "Choose the pieces again, then press Check.";
+      setChefMood("neutral");
     });
 
     nextBtn.addEventListener("click", nextQuestion);
@@ -2150,14 +2294,6 @@
     window.addEventListener("keydown", unlockAudio, { once:true });
     window.addEventListener("touchstart", unlockAudio, { once:true, passive:true });
 
-    window.addEventListener("wheel", (e)=>{
-      if(e.ctrlKey) e.preventDefault();
-    }, {passive:false});
-
-    window.addEventListener("keydown", (e)=>{
-      if((e.ctrlKey || e.metaKey) && ["+","-","=","_","0"].includes(e.key)) e.preventDefault();
-    }, {passive:false});
-
     bestScoreText.textContent = getBestScore();
     bestStreakText.textContent = getBestStreak();
     playerNameText.textContent = getPlayerName() || "Chef";
@@ -2166,11 +2302,8 @@
     renderTickets();
     renderPlate();
     updateTop();
-    fitApp();
     syncActionButtons();
-
-    window.addEventListener("resize", fitApp);
-    window.addEventListener("pageshow", fitApp);
+    setChefMood("neutral");
   </script>
 </body>
 </html>
