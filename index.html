@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Pizza Café — Equivalent Fractions</title>
   <link rel="icon" href="kimsze_sharp.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -20,18 +17,19 @@
       --good:#1f7a2e;
       --bad:#b42318;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
-
     body{
       margin:0;
-      font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE","Trebuchet MS","Arial Rounded MT Bold",sans-serif;
+      font-family:"Comic Sans MS","Comic Sans",cursive,sans-serif;
       background:linear-gradient(180deg,var(--bg1),var(--bg2));
       color:#5f361d;
       overflow:hidden;
     }
 
+    body.cover-open .dashboard-btn,
+    body.cover-open .teacher-btn,
+    body.cover-open .credit-line,
     body.cover-open .dashboard,
     body.cover-open .teacher-panel{
       display:none !important;
@@ -48,17 +46,16 @@
       padding:12px;
     }
     .cover.hidden{display:none}
-
     .cover-card{
-      width:min(calc(100% - 32px),980px);
+      width:min(calc(100% - 40px),980px);
       background:linear-gradient(180deg,#fff8ef,#ffe7c9);
       border:5px solid var(--brown);
       border-radius:28px;
       padding:14px 16px;
       text-align:center;
       box-shadow:0 18px 40px rgba(0,0,0,.32);
+      margin:0 auto;
     }
-
     .cover-card img{
       width:min(100%,820px);
       max-height:min(340px,40svh);
@@ -69,19 +66,16 @@
       border:4px solid var(--brown);
       background:#111;
     }
-
     .cover h1{
       margin:6px 0 0;
       font-size:clamp(1.7rem,3vw,2.9rem);
       color:#a94e12;
     }
-
     .cover p{
       margin:4px 0 10px;
       font-size:1rem;
       font-weight:900;
     }
-
     .cover-tip{
       font-size:15px;
       font-weight:800;
@@ -92,9 +86,7 @@
       border-radius:18px;
       padding:10px 14px;
       margin:0 auto 10px;
-      line-height:1.35;
     }
-
     .start-btn{
       min-width:220px;
       padding:13px 24px;
@@ -106,7 +98,6 @@
       cursor:pointer;
       animation:blinkStart 1.2s infinite;
     }
-
     @keyframes blinkStart{
       0%,100%{opacity:1}
       50%{opacity:.78}
@@ -139,26 +130,22 @@
       padding:6px 10px;
       box-shadow:var(--shadow);
     }
-
     .title{
       font-size:clamp(1.15rem,1.4vw,1.7rem);
       font-weight:900;
       line-height:1;
     }
-
     .sub{
       font-size:11px;
       font-weight:700;
       opacity:.85;
     }
-
     .wrap{
       display:flex;
       gap:6px;
       flex-wrap:wrap;
       align-items:center;
     }
-
     .pill,.btn-chip{
       background:#fff3df;
       border:2.5px solid var(--brown);
@@ -167,7 +154,6 @@
       font-weight:900;
       font-size:12px;
     }
-
     .btn-chip{cursor:pointer}
     .timer.warn{background:#ffe0d8;color:#a11a1a}
 
@@ -191,7 +177,6 @@
       flex:0 0 auto;
     }
     .hot-streak-banner.show{display:flex}
-
     @keyframes hotPulse{
       0%,100%{transform:scale(1)}
       50%{transform:scale(1.03)}
@@ -204,12 +189,10 @@
       gap:4px;
       align-items:center;
     }
-
     .ticket-label{
       font-weight:900;
       font-size:13px;
     }
-
     .tickets{
       display:flex;
       gap:5px;
@@ -223,7 +206,6 @@
       width:min(100%,520px);
       box-shadow:0 4px 0 rgba(123,75,42,.08);
     }
-
     .ticket{
       width:24px;
       height:28px;
@@ -238,7 +220,6 @@
       box-shadow:0 2px 0 rgba(123,75,42,.08);
       position:relative;
     }
-
     .ticket::before,.ticket::after{
       content:"";
       position:absolute;
@@ -263,13 +244,11 @@
       gap:4px;
       margin-inline:auto;
     }
-
     .progress-label{
       text-align:center;
       font-weight:900;
       font-size:13px;
     }
-
     .progress-bar{
       width:100%;
       height:14px;
@@ -279,11 +258,10 @@
       overflow:hidden;
       box-shadow:0 4px 0 rgba(123,75,42,.08);
     }
-
     .progress-fill{
       width:0%;
       height:100%;
-      background:linear-gradient(90deg,#ffb347,#ffd85f,#6ad36f);
+      background:linear-gradient(90deg, #ffb347, #ffd85f, #6ad36f);
       border-radius:999px;
       transition:width .25s ease;
     }
@@ -295,7 +273,6 @@
       flex:1 1 auto;
       min-height:0;
     }
-
     .panel{
       background:var(--panel);
       border:3px solid var(--brown);
@@ -305,13 +282,11 @@
       min-height:0;
       overflow:auto;
     }
-
     .panel h2{
       margin:0 0 6px;
       text-align:center;
       font-size:.92rem;
     }
-
     .side{
       display:grid;
       grid-template-rows:auto auto auto 1fr;
@@ -320,7 +295,6 @@
       overflow:auto;
       padding-right:2px;
     }
-
     .character{
       width:100%;
       max-width:315px;
@@ -331,7 +305,6 @@
       border-radius:14px;
       background:#f2f2f2;
     }
-
     .tag{
       display:inline-flex;
       justify-self:center;
@@ -345,7 +318,6 @@
       font-weight:900;
       font-size:13px;
     }
-
     .card{
       background:var(--cream);
       border:3px solid var(--brown);
@@ -354,18 +326,15 @@
       text-align:center;
       box-shadow:0 6px 0 rgba(123,75,42,.08);
     }
-
     .dialogue,.bubble,.note{
       font-size:13px;
       font-weight:800;
       line-height:1.2;
     }
-
     .dialogue{
       min-height:24px;
       color:#8a4f18;
     }
-
     .bubble{
       background:var(--cream);
       border:3px solid var(--brown);
@@ -377,7 +346,6 @@
       justify-content:center;
       text-align:center;
     }
-
     .note{
       background:#fff3df;
       border:2.5px dashed var(--brown);
@@ -385,12 +353,10 @@
       padding:8px 10px;
       text-align:center;
     }
-
     .order-line{
       font-size:13px;
       font-weight:800;
     }
-
     .help-line{
       margin-top:6px;
       font-size:12px;
@@ -405,14 +371,12 @@
       justify-content:center;
       line-height:1;
     }
-
     .frac .num,.frac .den{
       font-size:2rem;
       font-weight:900;
       color:#c63d1f;
       padding:0 6px;
     }
-
     .frac .bar{
       width:100%;
       min-width:30px;
@@ -421,13 +385,11 @@
       border-radius:99px;
       margin:3px 0;
     }
-
     .frac-sm .num,.frac-sm .den{
       font-size:16px;
       font-weight:900;
       padding:0 5px;
     }
-
     .frac-sm .bar{
       width:100%;
       min-width:28px;
@@ -436,13 +398,11 @@
       border-radius:99px;
       margin:2px 0;
     }
-
     .frac-lg .num,.frac-lg .den{
       font-size:24px;
       font-weight:900;
       padding:0 6px;
     }
-
     .frac-lg .bar{
       width:100%;
       min-width:34px;
@@ -460,7 +420,6 @@
       gap:6px;
       height:100%;
     }
-
     .pizza-stage{
       position:relative;
       width:min(100%,580px);
@@ -472,7 +431,6 @@
       align-items:center;
       justify-content:center;
     }
-
     .board{
       position:absolute;
       inset:4%;
@@ -486,7 +444,6 @@
       border:8px solid #8e5e2f;
       box-shadow:inset 0 0 0 8px rgba(255,255,255,.15), 0 10px 18px rgba(0,0,0,.15);
     }
-
     .pizza-sparkle{
       position:absolute;
       inset:9%;
@@ -501,25 +458,22 @@
       transition:opacity .25s ease;
       mix-blend-mode:screen;
     }
-    .pizza-sparkle.show{opacity:1; animation:sparkleFlash .7s ease forwards;}
-
+    .pizza-sparkle.show{opacity:1;animation:sparkleFlash .7s ease forwards;}
     @keyframes sparkleFlash{
-      0%{opacity:0; transform:scale(.96)}
-      25%{opacity:1; transform:scale(1)}
-      70%{opacity:.9; transform:scale(1.02)}
-      100%{opacity:0; transform:scale(1)}
+      0%{opacity:0;transform:scale(.96)}
+      25%{opacity:1;transform:scale(1)}
+      70%{opacity:.9;transform:scale(1.02)}
+      100%{opacity:0;transform:scale(1)}
     }
-
     svg#pizzaSvg{
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
     }
-
-    .slice{cursor:pointer; transition:.15s ease}
+    .slice{cursor:pointer;transition:.15s ease}
     .slice:hover{filter:brightness(1.06)}
-    .slice.selected{fill:#bdbdbd !important; filter:grayscale(1)}
+    .slice.selected{fill:#bdbdbd !important;filter:grayscale(1)}
     .slice.hint{
       stroke:#2b7de9 !important;
       stroke-width:6 !important;
@@ -537,7 +491,6 @@
       font-weight:900;
     }
     .grouping.show{display:block}
-
     .groups{
       display:flex;
       justify-content:center;
@@ -545,7 +498,6 @@
       flex-wrap:wrap;
       margin-top:6px;
     }
-
     .group-box{
       min-width:54px;
       padding:8px 10px;
@@ -562,19 +514,16 @@
       align-items:center;
       gap:4px;
     }
-
     .plate-wrap{
       width:300px;
       max-width:100%;
       aspect-ratio:1/.72;
     }
-
     svg#plateSvg{
       width:100%;
       height:100%;
       display:block;
     }
-
     .served{
       font-size:14px;
       font-weight:900;
@@ -586,7 +535,6 @@
       gap:10px;
       flex-wrap:wrap;
     }
-
     .game-btn{
       min-width:100px;
       padding:10px 14px;
@@ -598,7 +546,11 @@
       font-weight:900;
       color:#5f361d;
     }
-
+    .game-btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      filter:grayscale(.15);
+    }
     .btn-check{background:#dff7df}
     .btn-clear{background:#ffe6cc}
     .btn-next{background:#ece4ff}
@@ -618,7 +570,6 @@
       font-size:12px;
       font-weight:900;
     }
-
     .feedback.good{color:var(--good)}
     .feedback.bad{color:var(--bad)}
 
@@ -630,7 +581,6 @@
       margin-top:2px;
       min-height:38px;
     }
-
     .meta-actions{
       display:flex;
       align-items:center;
@@ -648,9 +598,10 @@
       z-index:100;
     }
     .modal.show{display:flex}
-
     .modal-card{
       width:min(calc(100% - 24px),760px);
+      max-height:min(88vh,820px);
+      overflow:auto;
       background:linear-gradient(180deg,#fffef9,#fff1dc);
       border:5px solid var(--brown);
       border-radius:28px;
@@ -658,14 +609,12 @@
       padding:22px 20px;
       text-align:center;
     }
-
     .modal-title{
       font-size:38px;
       font-weight:900;
       color:#b85b18;
       margin-bottom:10px;
     }
-
     .modal-badge{
       display:inline-block;
       padding:14px 22px;
@@ -676,14 +625,12 @@
       font-weight:900;
       margin:10px 0 16px;
     }
-
     .modal-line{
       font-size:22px;
       font-weight:800;
       line-height:1.3;
       margin-bottom:12px;
     }
-
     .report{
       width:min(100%,620px);
       margin:0 auto 18px;
@@ -696,7 +643,6 @@
       font-weight:800;
       line-height:1.45;
     }
-
     .modal-actions{
       display:flex;
       justify-content:center;
@@ -706,60 +652,75 @@
 
     .easter-egg{
       display:none;
-      width:min(100%,620px);
-      margin:0 auto 16px;
-      padding:16px 18px;
+      position:relative;
+      width:min(100%,500px);
+      margin:0 auto 14px;
+      padding:12px 14px 14px;
       background:linear-gradient(180deg,#fff7b8,#ffd86b,#ffb84d);
       border:4px solid var(--brown);
-      border-radius:22px;
+      border-radius:20px;
       text-align:center;
       box-shadow:0 10px 0 rgba(123,75,42,.12);
       animation:easterPop .8s ease;
     }
     .easter-egg.show{display:block}
-
     .easter-title{
-      font-size:30px;
+      font-size:24px;
       font-weight:900;
       color:#8a3d00;
-      margin-bottom:8px;
+      margin-bottom:6px;
       text-shadow:0 2px 0 rgba(255,255,255,.35);
     }
-
     .easter-line{
-      font-size:20px;
+      font-size:16px;
       font-weight:900;
       line-height:1.35;
       color:#5f361d;
     }
-
     .easter-badge{
       display:inline-block;
-      margin-top:10px;
-      padding:10px 16px;
+      margin-top:8px;
+      padding:8px 14px;
       border-radius:999px;
       border:3px solid var(--brown);
       background:#fff8eb;
-      font-size:22px;
+      font-size:18px;
       font-weight:900;
     }
-
+    .easter-close{
+      position:absolute;
+      top:8px;
+      right:8px;
+      min-width:auto;
+      padding:6px 10px;
+      font-size:12px;
+      line-height:1;
+    }
+    #easterEggGraphic{
+      display:block;
+      width:min(100%,180px);
+      max-height:140px;
+      object-fit:contain;
+      margin:0 auto 10px;
+      border:4px solid var(--brown);
+      border-radius:16px;
+      background:#fff8eb;
+    }
     @keyframes easterPop{
-      0%{transform:scale(.85); opacity:0}
-      70%{transform:scale(1.04); opacity:1}
-      100%{transform:scale(1); opacity:1}
+      0%{transform:scale(.85);opacity:0}
+      70%{transform:scale(1.04);opacity:1}
+      100%{transform:scale(1);opacity:1}
     }
 
     .name-input{
       width:min(360px,90%);
-      font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE","Trebuchet MS","Arial Rounded MT Bold",sans-serif;
+      font-family:"Comic Sans MS","Comic Sans",cursive,sans-serif;
       font-size:22px;
       padding:12px 14px;
       border:4px solid #7b4b2a;
       border-radius:16px;
       background:#fff;
     }
-
     .last-user{
       background:#fff8eb;
       border:3px solid var(--brown);
@@ -770,7 +731,6 @@
       display:none;
     }
     .last-user.show{display:block}
-
     .last-user-name{
       font-size:24px;
       font-weight:900;
@@ -793,14 +753,12 @@
       display:none;
     }
     .dashboard.show{display:block}
-
     .dash-title{
       font-size:24px;
       font-weight:900;
       text-align:center;
       margin-bottom:10px;
     }
-
     .dash-box{
       background:#fff8eb;
       border:3px solid var(--brown);
@@ -808,12 +766,10 @@
       padding:10px;
       margin-bottom:12px;
     }
-
     .dash-box h3{
       margin:0 0 8px;
       font-size:20px;
     }
-
     .score-log-list{
       background:#fff;
       border:3px solid var(--brown);
@@ -822,7 +778,6 @@
       max-height:260px;
       overflow:auto;
     }
-
     .score-row{
       display:grid;
       grid-template-columns:48px 1fr 90px 110px;
@@ -862,11 +817,7 @@
       display:none;
     }
     .teacher-panel.show{display:block}
-
-    .teacher-opt.active,
-    .hint-opt.active{
-      background:#dff7df;
-    }
+    .teacher-opt.active,.hint-opt.active{background:#dff7df}
 
     .credit-line{
       position:static;
@@ -886,44 +837,46 @@
       inset:0;
       pointer-events:none;
       overflow:hidden;
-      z-index:120;
+      z-index:130;
     }
-
     .confetti-piece{
-      position:absolute;
-      top:-40px;
-      width:14px;
-      height:18px;
-      border-radius:4px;
+      position:fixed;
+      top:-30px;
+      border-radius:3px;
       opacity:.95;
-      animation:confettiFall linear forwards;
-      box-shadow:0 2px 0 rgba(0,0,0,.12);
+      animation-name:confettiFall;
+      animation-timing-function:linear;
+      animation-fill-mode:forwards;
     }
-
     @keyframes confettiFall{
-      0%{transform:translateY(-30px) rotate(0deg); opacity:1}
-      100%{transform:translateY(115vh) rotate(720deg); opacity:1}
+      0%{transform:translateY(-30px) rotate(0deg);opacity:1}
+      100%{transform:translateY(110vh) rotate(720deg);opacity:1}
     }
 
-    .slice,
-    .game-btn,
-    .btn-chip,
-    .dashboard-btn,
-    .teacher-btn{
-      touch-action:manipulation;
+    @media (max-width:700px){
+      .main{grid-template-columns:1fr}
+      .character{max-width:240px;height:150px}
+      .pizza-stage{width:min(100%,84vw);height:min(100%,84vw)}
+      .modal-title{font-size:28px}
+      .modal-badge{font-size:20px}
+      .modal-line,.report,.feedback,.bubble,.note,.dialogue,.cover-tip,.easter-line{font-size:16px}
+      .easter-title{font-size:24px}
+      .easter-badge{font-size:18px}
+      .score-row{grid-template-columns:36px 1fr 72px}
     }
   </style>
 </head>
 <body class="cover-open">
+
   <div class="cover" id="coverScreen">
     <div class="cover-card">
       <img src="pizza_cafe_cover.png" alt="Pizza Café Cover">
       <h1>Pizza Café</h1>
       <p>Equivalent Fraction Edition</p>
-      <div class="cover-tip">
+      <div class="cover-tip" style="max-width:820px; line-height:1.35;">
         <strong>Game Journey</strong><br>
         Level 1 = Practice<br>
-        Levels 2–4 = Scored assessment rounds<br>
+        Levels 2–4 = Main challenge rounds<br>
         The levels get harder with trickier fractions, different pizza slices, and timers<br>
         Level 5 = Bonus rush challenge (score 9/10 or 10/10 to unlock the secret easter egg)
       </div>
@@ -935,18 +888,17 @@
     <header class="topbar">
       <div>
         <div class="title">Pizza Café</div>
-        <div class="sub">Level 1 is practice. Levels 2–4 count for SLS. Level 5 is bonus.</div>
+        <div class="sub">Level 1 is practice. Levels 2–4 count toward your final score. Level 5 is bonus.</div>
       </div>
       <div class="wrap">
         <div class="pill">👤 <span id="playerNameText">Chef</span></div>
         <button class="btn-chip" id="changeUserBtn" type="button">👥 Change User</button>
         <div class="pill">Level <span id="levelText">1</span></div>
         <div class="pill">Title: <span id="chefTitleText">Pizza Helper</span></div>
-        <div class="pill">Question <span id="qNum">1</span>/<span id="questionTotalTop">5</span></div>
+        <div class="pill">Question <span id="qNum">1</span>/<span id="questionTotalTop">3</span></div>
         <div class="pill">Round Score: <span id="scoreText">0</span></div>
-        <div class="pill">Assessment Score: <span id="assessmentScoreText">0</span>/<span id="assessmentMaxText">15</span></div>
+        <div class="pill">Final Score: <span id="assessmentScoreText">0</span>/<span id="assessmentMaxText">16</span></div>
         <div class="pill timer" id="timerPill">⏱ Time: <span id="timerText">Off</span></div>
-        <div class="pill">xAPI: <span id="xapiStatusText">Browser Mode</span></div>
         <button class="btn-chip" id="soundToggle" type="button">🔊 Sound: On</button>
       </div>
     </header>
@@ -979,12 +931,12 @@
           <div class="note">
             <strong>How the game gets harder</strong><br>
             Level 1 = Practice<br>
-            Level 2 = Assessment starts<br>
+            Level 2 = Main challenge starts<br>
             Level 3 = Harder fractions + timer<br>
-            Level 4 = Hardest assessment round<br>
+            Level 4 = Hardest main challenge round<br>
             Level 5 = Bonus rush challenge<br>
             Score 9/10 or 10/10 in Level 5 to unlock the secret easter egg<br><br>
-            <strong>Only Levels 2–4 count for SLS.</strong>
+            <strong>Only Levels 2–4 count toward your final score.</strong>
           </div>
         </div>
       </aside>
@@ -1016,7 +968,7 @@
       <aside class="panel">
         <div class="side">
           <h2>Chef</h2>
-          <img src="https://raw.githubusercontent.com/limkimsze-maker/P3-Equivalent-Fractions/5cecda18cddb6286009cb30368729140dc30982e/pizzachef.jpg" alt="Chef" class="character">
+          <img src="chef.png" alt="Chef" class="character">
           <div class="bubble" id="chefBubble">Click slices on the pizza, then press Check.</div>
           <div class="note">Current mission: <span id="missionText">Practise at Level 1.</span></div>
           <div class="note">Best device score: <span id="bestScoreText">0</span> | Best streak: <span id="bestStreakText">0</span></div>
@@ -1043,16 +995,16 @@
   </div>
 
   <div class="dashboard" id="dashboard">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;">
       <div class="dash-title" style="margin-bottom:0;">Player Dashboard</div>
-      <button class="game-btn btn-clear" id="closeDashboardBtn" style="min-width:auto;padding:8px 14px;">✖ Close</button>
+      <button class="game-btn btn-clear" id="closeDashboardBtn" type="button">✕ Close</button>
     </div>
     <div class="dash-box">
       <h3>Current</h3>
       <div>Player: <strong id="dashPlayer">Chef</strong></div>
       <div>Level: <strong id="dashLevel">1</strong></div>
       <div>Round Score: <strong id="dashRoundScore">0</strong></div>
-      <div>Assessment Score: <strong id="dashAssessmentScore">0/15</strong></div>
+      <div>Final Score: <strong id="dashAssessmentScore">0/16</strong></div>
       <div>Hints Used: <strong id="dashHints">0</strong></div>
       <div>Best Streak: <strong id="dashStreak">0</strong></div>
     </div>
@@ -1067,22 +1019,20 @@
 
   <div class="teacher-panel" id="teacherPanel">
     <div style="font-size:24px;font-weight:900;text-align:center;margin-bottom:10px;">Teacher Setup</div>
-
     <div style="margin-bottom:10px;font-weight:900;">Timer</div>
     <div class="wrap" style="margin-bottom:12px;">
       <button class="btn-chip teacher-opt active" data-timer="default">Default</button>
       <button class="btn-chip teacher-opt" data-timer="off">Off</button>
       <button class="btn-chip teacher-opt" data-timer="on">On</button>
     </div>
-
     <div style="margin-bottom:10px;font-weight:900;">Hints</div>
     <div class="wrap" style="margin-bottom:12px;">
       <button class="btn-chip hint-opt active" data-hints="on">On</button>
       <button class="btn-chip hint-opt" data-hints="off">Off</button>
     </div>
-
     <div style="text-align:center;">
       <button class="game-btn btn-check" id="closeTeacherBtn">✔ Done</button>
+      <button class="game-btn btn-clear" id="teacherClearSessionBtn" style="margin-top:8px;">🧹 New Session — Clear</button>
     </div>
   </div>
 
@@ -1110,7 +1060,7 @@
     <div class="modal-card">
       <div class="modal-title" id="levelIntroTitle">Level 1 — Practice Chef</div>
       <div class="modal-badge" id="levelIntroChefTitle">Pizza Helper</div>
-      <div class="modal-line" id="levelIntroMission">Practise only. This level does not count for SLS.</div>
+      <div class="modal-line" id="levelIntroMission">Practise only. This level does not count toward your final score.</div>
       <div class="report" id="levelIntroDetails"></div>
       <div class="modal-actions">
         <button class="game-btn btn-check" id="startLevelBtn">🍕 Start Level</button>
@@ -1126,7 +1076,8 @@
       <div class="modal-line" id="roundLine">Wonderful work, Chef!</div>
 
       <div class="easter-egg" id="easterEggBox">
-        <img id="easterEggGraphic" src="easter_egg_special.png" alt="Secret Easter Egg Graphic" style="display:block;width:min(100%,280px);max-height:220px;object-fit:contain;margin:0 auto 12px;border:4px solid var(--brown);border-radius:18px;background:#fff8eb;">
+        <button class="game-btn btn-clear easter-close" id="closeEasterEggBtn" type="button">✕</button>
+        <img id="easterEggGraphic" src="easter_egg_special.png" alt="Secret Easter Egg Graphic">
         <div class="easter-title">🎉 Secret Pizza Party Unlocked! 🎉</div>
         <div class="easter-line">
           You scored above 8 marks in Level 5 and found the Pizza Café easter egg!<br>
@@ -1142,35 +1093,29 @@
 
   <div class="confetti-layer" id="confettiLayer"></div>
 
-  <audio id="openingAudio" src="opening_sound.mp3" preload="auto" loop playsinline webkit-playsinline></audio>
-  <audio id="correctAudio" src="correct.mp3" preload="auto" playsinline webkit-playsinline></audio>
-  <audio id="wrongAudio" src="wrong.mp3" preload="auto" playsinline webkit-playsinline></audio>
-  <audio id="ovenDingAudio" src="oven_ding.mp3" preload="auto" playsinline webkit-playsinline></audio>
-  <audio id="orderBellAudio" src="order_bell.mp3" preload="auto" playsinline webkit-playsinline></audio>
-  <audio id="tadaAudio" src="tada.mp3" preload="auto" playsinline webkit-playsinline></audio>
+  <audio id="openingAudio" src="opening_sound.mp3" preload="auto" loop></audio>
+  <audio id="correctAudio" src="correct.mp3" preload="auto"></audio>
+  <audio id="wrongAudio" src="wrong.mp3" preload="auto"></audio>
+  <audio id="ovenDingAudio" src="oven_ding.mp3" preload="auto"></audio>
+  <audio id="orderBellAudio" src="order_bell.mp3" preload="auto"></audio>
+  <audio id="tadaAudio" src="tada.mp3" preload="auto"></audio>
 
   <script>
     const levels = {
-      1:{name:"Level 1 — Practice Chef", title:"Pizza Helper", pass:0, q:5, timer:0, counted:false, bonus:false, fractions:["1/2","1/3","1/4"], slices:[4,6,8,12], customers:["hungry","cheerful"], mission:"Practice only. This level does not count for SLS."},
-      2:{name:"Level 2 — Junior Chef", title:"Junior Chef", pass:3, q:5, timer:0, counted:true, bonus:false, fractions:["1/2","1/3","1/4","2/3"], slices:[6,8,9,12], customers:["hungry","cheerful","picky"], mission:"Assessment starts here. This level counts for SLS."},
-      3:{name:"Level 3 — Senior Chef", title:"Senior Chef", pass:3, q:5, timer:12, counted:true, bonus:false, fractions:["1/2","1/3","1/4","2/3","3/4"], slices:[6,8,9,12], customers:["picky","rushed","cheerful"], mission:"Harder fractions and timer. This level counts for SLS."},
-      4:{name:"Level 4 — Master Chef", title:"Master Chef", pass:3, q:5, timer:10, counted:true, bonus:false, fractions:["1/2","1/3","1/4","2/3","3/4","2/5","3/5"], slices:[6,8,9,10,12], customers:["vip","rushed","picky"], mission:"Final assessment level. End of Level 4 submits score to SLS."},
-      5:{name:"Level 5 — Pizza Rush", title:"Pizza Legend", pass:0, q:10, timer:60, counted:false, bonus:true, fractions:["1/2","1/3","1/4","2/3","3/4","2/5","3/5"], slices:[6,8,9,10,12], customers:["vip","rushed","genius"], mission:"Bonus only. 10 questions. Score above 8 marks to unlock the secret easter egg. This does not count for SLS."}
+      1:{name:"Level 1 — Practice Chef", title:"Pizza Helper", pass:0, q:3, timer:0, counted:false, bonus:false, fractions:["1/2","1/3","1/4"], slices:[4,6,8,12], customers:["hungry","cheerful"], mission:"Practice only. This level does not count toward your final score."},
+      2:{name:"Level 2 — Junior Chef", title:"Junior Chef", pass:3, q:4, timer:0, counted:true, bonus:false, fractions:["1/2","1/3","1/4","2/3"], slices:[6,8,9,12], customers:["hungry","cheerful","picky"], mission:"Main challenge starts here. This level counts toward your final score."},
+      3:{name:"Level 3 — Senior Chef", title:"Senior Chef", pass:3, q:5, timer:20, counted:true, bonus:false, fractions:["1/2","1/3","1/4","2/3","3/4"], slices:[6,8,9,12], customers:["picky","rushed","cheerful"], mission:"Harder fractions and timer. This level counts toward your final score."},
+      4:{name:"Level 4 — Master Chef", title:"Master Chef", pass:4, q:7, timer:15, counted:true, bonus:false, fractions:["1/2","1/3","1/4","2/3","3/4","2/5","3/5"], slices:[6,8,9,10,12], customers:["vip","rushed","picky"], mission:"Final main challenge level. Only Levels 2–4 count toward your final score."},
+      5:{name:"Level 5 — Pizza Rush", title:"Pizza Legend", pass:0, q:10, timer:60, counted:false, bonus:true, fractions:["1/2","1/3","1/4","2/3","3/4","2/5","3/5"], slices:[6,8,9,10,12], customers:["vip","rushed","genius"], mission:"Bonus only. 10 questions. Score above 8 marks to unlock the secret easter egg. This does not count toward your final score."}
     };
 
     const customerTypes = {
-      hungry:{icon:"🍽", label:"Hungry Customer", image:"customer_hungry.png", color:"#ffe9bf",
-        order:["Chef! I’m starving!","I need this fraction fast!","Please hurry!"], right:["Yum! Perfect!"], wrong:["Hmm... not enough."]},
-      cheerful:{icon:"😊", label:"Cheerful Customer", image:"customer_cheerful.png", color:"#ffe0f0",
-        order:["Hi Chef! I’d love this amount!","Pizza day is the best!"], right:["Hooray! Perfect slices!"], wrong:["Oopsie! Try again!"]},
-      picky:{icon:"🔎", label:"Picky Customer", image:"customer_picky.png", color:"#dff4ff",
-        order:["I want exactly this amount.","No mistakes, please."], right:["Yes. That is exact."], wrong:["That is not exact!"]},
-      rushed:{icon:"⏩", label:"Rushed Customer", image:"customer_rushed.png", color:"#fff0cf",
-        order:["Quick! I’m late!","Fast fast fast!"], right:["Thanks! Gotta run!"], wrong:["Too slow... and wrong!"]},
-      vip:{icon:"👑", label:"VIP Customer", image:"customer_vip.png", color:"#fff7bf",
-        order:["Excellence only, Chef.","Serve this properly."], right:["Excellent service."], wrong:["I expected better."]},
-      genius:{icon:"🧠", label:"Math Genius Customer", image:"customer_genius.png", color:"#e5dbff",
-        order:["I know my fractions. Do you?","Show me elegant maths."], right:["Mathematically elegant."], wrong:["Check the denominator."]}
+      hungry:{icon:"🍽", label:"Hungry Customer", image:"customer_hungry.png", color:"#ffe9bf", order:["Chef! I’m starving!","I need this fraction fast!","Please hurry!"]},
+      cheerful:{icon:"😊", label:"Cheerful Customer", image:"customer_cheerful.png", color:"#ffe0f0", order:["Hi Chef! I’d love this amount!","Pizza day is the best!"]},
+      picky:{icon:"🔎", label:"Picky Customer", image:"customer_picky.png", color:"#dff4ff", order:["I want exactly this amount.","No mistakes, please."]},
+      rushed:{icon:"⏩", label:"Rushed Customer", image:"customer_rushed.png", color:"#fff0cf", order:["Quick! I’m late!","Fast fast fast!"]},
+      vip:{icon:"👑", label:"VIP Customer", image:"customer_vip.png", color:"#fff7bf", order:["Excellence only, Chef.","Serve this properly."]},
+      genius:{icon:"🧠", label:"Math Genius Customer", image:"customer_genius.png", color:"#e5dbff", order:["I know my fractions. Do you?","Show me elegant maths."]}
     };
 
     const newOrderChefLines = [
@@ -1180,7 +1125,6 @@
       "New customer! No pressure... just delicious fractions.",
       "Another order! Let’s slice with style!"
     ];
-
     const rightChefLines = [
       "Ha! That order was hotter than my pizza oven!",
       "Bing bong! Chef genius at work!",
@@ -1189,7 +1133,6 @@
       "Perfect! The customer might ask for my autograph now!",
       "Sizzling success! That pizza never stood a chance!"
     ];
-
     const wrongChefLines = [
       "Uh-oh... my moustache would be worried if I had one!",
       "Oopsy cheese! That slice count went on holiday!",
@@ -1231,7 +1174,6 @@
     const timerPill = document.getElementById("timerPill");
     const bestScoreText = document.getElementById("bestScoreText");
     const bestStreakText = document.getElementById("bestStreakText");
-    const xapiStatusText = document.getElementById("xapiStatusText");
     const customerPhoto = document.getElementById("customerPhoto");
     const customerTag = document.getElementById("customerTag");
     const customerDialogue = document.getElementById("customerDialogue");
@@ -1263,6 +1205,10 @@
     const dashAssessmentScore = document.getElementById("dashAssessmentScore");
     const dashHints = document.getElementById("dashHints");
     const dashStreak = document.getElementById("dashStreak");
+    const checkBtn = document.getElementById("checkBtn");
+    const hintBtn = document.getElementById("hintBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
     const PLAYER_NAME_KEY = "pizza_cafe_player";
     const BEST_SCORE_KEY = "pizza_cafe_best";
@@ -1277,6 +1223,7 @@
     let currentLevelScore = 0;
     let selectedSliceIds = new Set();
     let usedKeys = new Set();
+    let usedFractionTypes = new Set();
     let currentQuestion = null;
     let currentCustomer = null;
     let streak = 0;
@@ -1287,21 +1234,22 @@
     let timerInterval = null;
     let timeLeft = null;
     let assessmentScore = 0;
-    let assessmentMax = 15;
+    let assessmentMax = 16;
     let perLevelAssessment = {2:0,3:0,4:0};
+    let questionResolved = false;
+    let pausedByNameModal = false;
 
-    function detectXapiMode(){
-      return (typeof window.storeState === "function" || typeof window.sendState === "function") ? "SLS/xAPI" : "Browser Mode";
-    }
-
-    function setXapiStatus(){
-      xapiStatusText.textContent = detectXapiMode();
+    function syncActionButtons(){
+      const hasQuestion = !!currentQuestion;
+      checkBtn.disabled = !hasQuestion || questionResolved;
+      hintBtn.disabled = !hasQuestion || questionResolved;
+      clearBtn.disabled = !hasQuestion || questionResolved;
+      nextBtn.disabled = !hasQuestion || !questionResolved;
     }
 
     function getPlayerName(){
       return localStorage.getItem(PLAYER_NAME_KEY) || "";
     }
-
     function setPlayerName(name){
       localStorage.setItem(PLAYER_NAME_KEY, name);
       playerNameText.textContent = name || "Chef";
@@ -1312,7 +1260,6 @@
     function getBestScore(){
       return Number(localStorage.getItem(BEST_SCORE_KEY) || 0);
     }
-
     function setBestScore(v){
       if(v > getBestScore()) localStorage.setItem(BEST_SCORE_KEY, String(v));
       bestScoreText.textContent = getBestScore();
@@ -1321,24 +1268,18 @@
     function getBestStreak(){
       return Number(localStorage.getItem(BEST_STREAK_KEY) || 0);
     }
-
     function setBestStreak(v){
       if(v > getBestStreak()) localStorage.setItem(BEST_STREAK_KEY, String(v));
       bestStreakText.textContent = getBestStreak();
     }
 
     function getScoreLog(){
-      try{
-        return JSON.parse(localStorage.getItem(SCORE_LOG_KEY) || "[]");
-      }catch(e){
-        return [];
-      }
+      try{return JSON.parse(localStorage.getItem(SCORE_LOG_KEY) || "[]");}
+      catch(e){return [];}
     }
-
     function setScoreLog(v){
       localStorage.setItem(SCORE_LOG_KEY, JSON.stringify(v));
     }
-
     function addScoreLogEntry(entry){
       const log = getScoreLog();
       log.unshift(entry);
@@ -1346,7 +1287,6 @@
       setScoreLog(log);
       renderScoreLog();
     }
-
     function clearScoreLog(){
       localStorage.removeItem(SCORE_LOG_KEY);
       renderScoreLog();
@@ -1359,15 +1299,18 @@
         scoreLogList.innerHTML = `<div style="font-weight:800;color:#7a4c20;">No player scores saved yet.</div>`;
         return;
       }
-
-      const ranked = [...log].sort((a,b)=> b.assessmentScore - a.assessmentScore || b.accuracy - a.accuracy);
+      const ranked = [...log].sort((a,b)=> {
+        const aPct = (a.assessmentScore || 0) / (a.maxScore || assessmentMax);
+        const bPct = (b.assessmentScore || 0) / (b.maxScore || assessmentMax);
+        return bPct - aPct || (b.assessmentScore - a.assessmentScore);
+      });
       ranked.forEach((item, idx)=>{
         const row = document.createElement("div");
         row.className = "score-row";
         row.innerHTML = `
           <div>#${idx+1}</div>
           <div>${item.name}</div>
-          <div>${item.assessmentScore}/15</div>
+          <div>${item.assessmentScore}/${item.maxScore || assessmentMax}</div>
           <div>${item.date}</div>
         `;
         scoreLogList.appendChild(row);
@@ -1379,7 +1322,7 @@
       if(saved){
         lastUserName.textContent = saved;
         lastUserBox.classList.add("show");
-      }else{
+      } else {
         lastUserBox.classList.remove("show");
       }
     }
@@ -1389,39 +1332,22 @@
       audio.currentTime = 0;
       audio.play().catch(()=>{});
     }
-
     function playOpeningLoop(){
-      if(!soundOn || !audioUnlocked) return;
-      if(openingAudio.paused){
-        openingAudio.play().catch(()=>{});
-      }
+      if(!soundOn || !audioUnlocked || !openingAudio) return;
+      openingAudio.currentTime = 0;
+      openingAudio.play().catch(()=>{});
     }
-
     function stopOpeningLoop(){
+      if(!openingAudio) return;
       openingAudio.pause();
       openingAudio.currentTime = 0;
     }
-
-    function unlockAudio(forcePlayOpening = false){
-      const wasUnlocked = audioUnlocked;
+    function unlockAudio(){
+      if(audioUnlocked) return;
       audioUnlocked = true;
-
-      if(soundOn && (forcePlayOpening || (!wasUnlocked && !coverScreen.classList.contains("hidden")))){
-        if(openingAudio.paused){
-          openingAudio.play().catch(()=>{});
-        }
+      if(!coverScreen.classList.contains("hidden") && soundOn){
+        playOpeningLoop();
       }
-    }
-
-    function fitDesktopApp(){
-      const designW = 1780;
-      const designH = 980;
-      const pad = 12;
-      const scale = Math.min(
-        (window.innerWidth - pad) / designW,
-        (window.innerHeight - pad) / designH
-      );
-      document.documentElement.style.setProperty("--app-scale", Math.min(1, scale).toFixed(4));
     }
 
     function launchConfetti(count=60){
@@ -1433,7 +1359,6 @@
         piece.style.background = colors[Math.floor(Math.random()*colors.length)];
         piece.style.animationDuration = `${2.4 + Math.random()*2.2}s`;
         piece.style.animationDelay = `${Math.random()*0.35}s`;
-        piece.style.transform = `translateY(-30px) rotate(${Math.random()*360}deg)`;
         piece.style.width = `${10 + Math.random()*10}px`;
         piece.style.height = `${12 + Math.random()*14}px`;
         confettiLayer.appendChild(piece);
@@ -1442,9 +1367,7 @@
     }
 
     function gcd(a,b){
-      while(b){
-        [a,b] = [b,a%b];
-      }
+      while(b){ [a,b] = [b,a%b]; }
       return a;
     }
 
@@ -1458,7 +1381,8 @@
       const all = [[1,2],[1,3],[1,4],[2,3],[3,4],[2,5],[3,5]];
 
       for(const [n,d] of all){
-        if(!lv.fractions.includes(`${n}/${d}`)) continue;
+        const fracKey = `${n}/${d}`;
+        if(!lv.fractions.includes(fracKey)) continue;
         if(gcd(n,d)!==1) continue;
 
         for(const slices of lv.slices){
@@ -1466,26 +1390,43 @@
             bank.push({
               numerator:n,
               denominator:d,
+              fractionKey: fracKey,
               pizzaSlices:slices,
               correctPieces:(n*slices)/d,
-              key:`${n}/${d}->${slices}`
+              key:`${fracKey}->${slices}`
             });
           }
         }
       }
-
       return bank;
     }
 
     function getRandomQuestion(){
       const bank = questionBankForLevel(currentLevel);
-      const available = bank.filter(q => !usedKeys.has(q.key));
+      const levelFractions = currentLevelCfg().fractions.slice();
+
+      let available = bank.filter(q => !usedKeys.has(q.key));
+      const uncoveredFractions = levelFractions.filter(f => !usedFractionTypes.has(f));
+
+      if(uncoveredFractions.length){
+        const priority = available.filter(q => uncoveredFractions.includes(q.fractionKey));
+        if(priority.length) available = priority;
+      }
+
       if(!available.length){
         usedKeys.clear();
-        return getRandomQuestion();
+        available = bank.slice();
+
+        const uncoveredAgain = levelFractions.filter(f => !usedFractionTypes.has(f));
+        if(uncoveredAgain.length){
+          const priority = available.filter(q => uncoveredAgain.includes(q.fractionKey));
+          if(priority.length) available = priority;
+        }
       }
+
       const q = available[Math.floor(Math.random()*available.length)];
       usedKeys.add(q.key);
+      usedFractionTypes.add(q.fractionKey);
       return q;
     }
 
@@ -1505,7 +1446,7 @@
       const lv = currentLevelCfg();
       levelText.textContent = currentLevel;
       chefTitleText.textContent = lv.title;
-      qNum.textContent = currentQuestionNumber;
+      qNum.textContent = Math.min(currentQuestionNumber, lv.q);
       questionTotalTop.textContent = lv.q;
       scoreText.textContent = currentLevelScore;
       assessmentScoreText.textContent = assessmentScore;
@@ -1515,10 +1456,16 @@
       timerPill.classList.toggle("warn", effectiveTimer() && timeLeft !== null && timeLeft <= 3);
       dashLevel.textContent = currentLevel;
       dashRoundScore.textContent = currentLevelScore;
-      dashAssessmentScore.textContent = `${assessmentScore}/15`;
+      dashAssessmentScore.textContent = `${assessmentScore}/${assessmentMax}`;
       dashHints.textContent = hintsUsed;
       dashStreak.textContent = bestStreakRound;
-      progressFill.style.width = `${Math.min(100, ((currentQuestionNumber - 1) / Math.max(1, lv.q)) * 100)}%`;
+
+      const qForProgress = Math.min(currentQuestionNumber, lv.q);
+      const resolvedBoost = questionResolved ? 1 : 0;
+      const pct = ((qForProgress - 1 + resolvedBoost) / Math.max(1, lv.q)) * 100;
+      progressFill.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+
+      nextBtn.textContent = currentQuestionNumber >= lv.q ? "🏁 Finish Level" : "➡ Next Order";
     }
 
     function renderTickets(){
@@ -1540,15 +1487,12 @@
       t.textContent = type === "correct" ? "✓" : "✕";
     }
 
-    function polarToCartesian(cx, cy, r, angleDeg){
+    function polarToCartesian(cx, cy, r, angleDeg) {
       const angleRad = (angleDeg - 90) * Math.PI / 180;
-      return {
-        x: cx + r * Math.cos(angleRad),
-        y: cy + r * Math.sin(angleRad)
-      };
+      return { x: cx + r * Math.cos(angleRad), y: cy + r * Math.sin(angleRad) };
     }
 
-    function wedgePath(cx, cy, r, startAngle, endAngle){
+    function wedgePath(cx, cy, r, startAngle, endAngle) {
       const start = polarToCartesian(cx, cy, r, endAngle);
       const end = polarToCartesian(cx, cy, r, startAngle);
       const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
@@ -1569,7 +1513,6 @@
       clearSvg(plateSvg);
       plateSvg.appendChild(svgEl("ellipse",{cx:260,cy:215,rx:175,ry:95,fill:"#e9edf2",stroke:"#7b4b2a","stroke-width":5}));
       plateSvg.appendChild(svgEl("ellipse",{cx:260,cy:200,rx:150,ry:78,fill:"#ffffff",stroke:"#d2d8df","stroke-width":4}));
-
       if(!currentQuestion) return;
 
       const cx=260, cy=200, crustR=150, cheeseR=132, anglePer = 360/currentQuestion.pizzaSlices;
@@ -1593,7 +1536,6 @@
       const groups = currentQuestion.denominator;
       const size = currentQuestion.pizzaSlices / currentQuestion.denominator;
       groupTitle.textContent = `Visual Help: ${currentQuestion.pizzaSlices} slices ÷ ${groups} equal groups`;
-
       for(let i=0;i<groups;i++){
         const d = document.createElement("div");
         d.className = "group-box";
@@ -1650,10 +1592,16 @@
     }
 
     function toggleSlice(id, el){
+      if(questionResolved){
+        feedback.className = "feedback";
+        feedback.textContent = "This order is already locked. Press Next Order.";
+        return;
+      }
+
       if(selectedSliceIds.has(id)){
         selectedSliceIds.delete(id);
         el.classList.remove("selected");
-      }else{
+      } else {
         selectedSliceIds.add(id);
         el.classList.add("selected");
       }
@@ -1671,6 +1619,8 @@
     function loadQuestion(){
       currentQuestion = getRandomQuestion();
       currentCustomer = randomCustomer();
+      questionResolved = false;
+      pausedByNameModal = false;
       orderFraction.innerHTML = fractionHTML(currentQuestion.numerator, currentQuestion.denominator);
       sliceCountText.textContent = currentQuestion.pizzaSlices;
       customerPhoto.src = currentCustomer.image;
@@ -1679,16 +1629,24 @@
       customerDialogue.textContent = currentCustomer.order[Math.floor(Math.random()*currentCustomer.order.length)];
       chefBubble.textContent = newOrderChefLines[Math.floor(Math.random()*newOrderChefLines.length)];
       feedback.className = "feedback";
-      feedback.textContent = currentLevelCfg().counted ? "Assessment order is ready!" : "Practice order is ready!";
+      feedback.textContent = currentLevelCfg().counted ? "Scored order is ready!" : "Practice order is ready!";
       groupPanel.classList.remove("show");
       renderPizza();
       updateTop();
+      syncActionButtons();
       safePlay(orderBellAudio);
       startTimer();
     }
 
     function showHint(){
-      if(!hintsEnabled || !currentQuestion){
+      if(!currentQuestion) return;
+
+      if(questionResolved){
+        chefBubble.textContent = "This order is already locked. Press Next Order.";
+        return;
+      }
+
+      if(!hintsEnabled){
         chefBubble.textContent = "Hints are switched off by Teacher Setup.";
         return;
       }
@@ -1696,12 +1654,10 @@
       renderGrouping();
       groupPanel.classList.add("show");
       clearHints();
-
       for(let i=0;i<currentQuestion.correctPieces;i++){
         const el = pizzaSvg.querySelector(`.slice[data-id="${i}"]`);
         if(el) el.classList.add("hint");
       }
-
       chefBubble.textContent = `Try this: ${currentQuestion.pizzaSlices} ÷ ${currentQuestion.denominator}, then multiply by ${currentQuestion.numerator}.`;
       feedback.className = "feedback";
       feedback.textContent = "💡 Hint shown.";
@@ -1716,8 +1672,27 @@
         updateTop();
         return;
       }
-
       timeLeft = t;
+      updateTop();
+      timerInterval = setInterval(()=>{
+        timeLeft--;
+        updateTop();
+        if(timeLeft <= 0){
+          stopTimer();
+          handleTimeUp();
+        }
+      },1000);
+    }
+
+    function resumeTimer(){
+      stopTimer();
+      if(questionResolved || !currentQuestion) return;
+      if(!effectiveTimer()) return;
+      if(timeLeft === null) timeLeft = effectiveTimer();
+      if(timeLeft <= 0){
+        handleTimeUp();
+        return;
+      }
       updateTop();
       timerInterval = setInterval(()=>{
         timeLeft--;
@@ -1737,17 +1712,30 @@
     }
 
     function handleTimeUp(){
+      if(questionResolved || !currentQuestion) return;
+      questionResolved = true;
       streak = 0;
       markTicket("wrong");
       feedback.className = "feedback bad";
-      feedback.innerHTML = `⏱ Time’s up! ${fractionHTML(currentQuestion.correctPieces, currentQuestion.pizzaSlices, "frac-sm")}`;
+      feedback.innerHTML = `⏱ Time’s up! Correct answer: ${fractionHTML(currentQuestion.correctPieces, currentQuestion.pizzaSlices, "frac-sm")}`;
       chefBubble.textContent = "The oven timer rang before we finished!";
       safePlay(wrongAudio);
+      hotStreakBanner.classList.remove("show");
+      updateTop();
+      syncActionButtons();
     }
 
     function checkAnswer(){
       if(!currentQuestion) return;
+
+      if(questionResolved){
+        feedback.className = "feedback";
+        feedback.textContent = "This order is already locked. Press Next Order.";
+        return;
+      }
+
       stopTimer();
+      questionResolved = true;
       const correct = selectedSliceIds.size === currentQuestion.correctPieces;
 
       if(correct){
@@ -1764,7 +1752,7 @@
         triggerSparkle();
         safePlay(correctAudio);
         safePlay(ovenDingAudio);
-      }else{
+      } else {
         streak = 0;
         markTicket("wrong");
         feedback.className = "feedback bad";
@@ -1776,9 +1764,19 @@
       if(streak >= 3) hotStreakBanner.classList.add("show");
       else hotStreakBanner.classList.remove("show");
       updateTop();
+      syncActionButtons();
     }
 
     function nextQuestion(){
+      if(!currentQuestion) return;
+
+      if(!questionResolved){
+        feedback.className = "feedback";
+        feedback.textContent = "Press Check first, or wait for time to run out.";
+        chefBubble.textContent = "Finish this order before moving on.";
+        return;
+      }
+
       currentQuestionNumber++;
       if(currentQuestionNumber > currentLevelCfg().q){
         finishLevel();
@@ -1791,41 +1789,27 @@
       if(levelNo === 1) return "Practice Complete";
       if(levelNo === 5) return score > 8 ? "Secret Unlocked" : "Bonus Complete";
       if(score === total) return "Perfect Chef";
-      if(score >= currentLevelCfg().pass) return "Level Cleared";
+      if(score >= levels[levelNo].pass) return "Level Cleared";
       return "Keep Practising";
     }
 
-    function submitToSLS(){
-      const payload = {
-        activityTitle: "Pizza Café — Equivalent Fractions",
-        playerName: getPlayerName() || "Chef",
-        score: assessmentScore,
-        maxScore: 15,
-        levelsCounted: [2,3,4],
-        level2: perLevelAssessment[2],
-        level3: perLevelAssessment[3],
-        level4: perLevelAssessment[4],
-        success: true
-      };
-
-      try{
-        if(typeof window.storeState === "function") window.storeState(payload);
-      }catch(e){}
-
-      try{
-        if(typeof window.sendState === "function") window.sendState(payload);
-      }catch(e){}
-
-      return payload;
+    function buildAssessmentFeedback(){
+      return [
+        `Pizza Café — Equivalent Fractions: ${assessmentScore}/${assessmentMax}.`,
+        `Level 2: ${perLevelAssessment[2]}/4.`,
+        `Level 3: ${perLevelAssessment[3]}/5.`,
+        `Level 4: ${perLevelAssessment[4]}/7.`
+      ].join(" ");
     }
 
     function saveFinalScoreToLog(){
-      const acc = Math.round((assessmentScore / 15) * 100);
+      const acc = Math.round((assessmentScore / assessmentMax) * 100);
       const now = new Date();
       const dateText = `${now.getDate()}/${now.getMonth()+1}/${String(now.getFullYear()).slice(-2)} ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;
       addScoreLogEntry({
         name:getPlayerName() || "Chef",
         assessmentScore,
+        maxScore: assessmentMax,
         accuracy:acc,
         date:dateText
       });
@@ -1833,6 +1817,11 @@
 
     function finishLevel(){
       stopTimer();
+      dashboard.classList.remove("show");
+      teacherPanel.classList.remove("show");
+      questionResolved = true;
+      pausedByNameModal = false;
+
       const lv = currentLevelCfg();
       safePlay(tadaAudio);
       easterEggBox.classList.remove("show");
@@ -1843,45 +1832,43 @@
       if(currentLevel === 1){
         roundReport.innerHTML = `
           Practice score: ${currentLevelScore}/${lv.q}<br>
-          This level does <strong>not</strong> count for SLS.<br>
-          Next: Level 2 assessment begins.
+          This level does <strong>not</strong> count toward your final score.<br>
+          Next: Level 2 main challenge begins.
         `;
-        roundLine.textContent = "Great. Practice is over. Now the real assessment begins.";
+        roundLine.textContent = "Great. Practice is over. Now the main challenge begins.";
         roundActions.innerHTML = `<button class="game-btn btn-check" id="roundNextBtn">➡ Go to Level 2</button>`;
       } else if(currentLevel >= 2 && currentLevel <= 3){
         roundReport.innerHTML = `
           ${lv.name}: ${currentLevelScore}/${lv.q}<br>
-          Current assessment total: ${assessmentScore}/15<br>
+          Current final score: ${assessmentScore}/${assessmentMax}<br>
           Levels counted so far: ${Object.entries(perLevelAssessment)
             .filter(([k])=> Number(k) <= currentLevel)
-            .map(([k,v])=>`L${k}: ${v}/5`)
+            .map(([k,v])=>`L${k}: ${v}/${levels[k].q}`)
             .join("<br>")}
         `;
         roundLine.textContent = "Good work. The next level will be harder.";
         roundActions.innerHTML = `<button class="game-btn btn-check" id="roundNextBtn">➡ Next Level</button>`;
       } else if(currentLevel === 4){
-        const payload = submitToSLS();
         saveFinalScoreToLog();
         roundReport.innerHTML = `
-          Level 2: ${perLevelAssessment[2]}/5<br>
+          Level 2: ${perLevelAssessment[2]}/4<br>
           Level 3: ${perLevelAssessment[3]}/5<br>
-          Level 4: ${perLevelAssessment[4]}/5<br><br>
-          <strong>Final SLS Score: ${assessmentScore}/15</strong><br>
-          Score submitted to SLS/browser payload.<br>
-          Payload score: ${payload.score}/${payload.maxScore}
+          Level 4: ${perLevelAssessment[4]}/7<br><br>
+          <strong>Final Score: ${assessmentScore}/${assessmentMax}</strong><br>
+          Summary: ${buildAssessmentFeedback()}<br><br>
+          <strong>Main challenge complete.</strong> Level 5 is an optional bonus challenge for fun and does not change your final score.
         `;
-        roundLine.textContent = "Assessment complete. Level 5 is bonus only.";
+        roundLine.textContent = "You finished the main challenge. You can play Level 5 for bonus fun or replay.";
         roundActions.innerHTML = `
           <button class="game-btn btn-next" id="roundBonusBtn">⚡ Play Bonus Level 5</button>
-          <button class="game-btn btn-check" id="roundReplayBtn">🔁 Replay From Level 1</button>
+          <button class="game-btn btn-clear" id="roundReplayBtn">🔁 Replay From Level 1</button>
         `;
       } else {
         const unlockedEgg = currentLevelScore > 8;
-
         roundReport.innerHTML = `
           Bonus score this round: ${currentLevelScore}/${lv.q}<br>
-          Final assessment score remains: <strong>${assessmentScore}/15</strong><br>
-          Level 5 is for fun only and does not change the SLS score.<br><br>
+          Final score remains: <strong>${assessmentScore}/${assessmentMax}</strong><br>
+          Level 5 is for fun only and does not change the final score.<br><br>
           <strong>Secret rule:</strong> Score above 8 marks in this round to unlock the easter egg.
         `;
 
@@ -1889,18 +1876,22 @@
           roundLine.textContent = "Bonus round complete! Secret unlocked!";
           easterEggBox.classList.add("show");
           launchConfetti(80);
-        }else{
-          roundLine.textContent = "Bonus round complete! Score above 8 next time to unlock the secret easter egg.";
+        } else {
+          roundLine.textContent = "Bonus round complete!";
           easterEggBox.classList.remove("show");
         }
 
-        roundActions.innerHTML = `<button class="game-btn btn-check" id="roundReplayBtn">🔁 Replay From Level 1</button>`;
+        roundActions.innerHTML = `
+          <button class="game-btn btn-clear" id="roundReplayBtn">🔁 Replay From Level 1</button>
+        `;
       }
 
+      currentQuestion = null;
+      updateTop();
+      syncActionButtons();
       roundModal.classList.add("show");
       bindRoundButtons();
       renderScoreLog();
-      updateTop();
     }
 
     function bindRoundButtons(){
@@ -1928,18 +1919,40 @@
       currentLevel = levelNo;
       currentQuestionNumber = 1;
       currentLevelScore = 0;
-      usedKeys.clear();
+      currentQuestion = null;
+      currentCustomer = null;
+      questionResolved = false;
+      pausedByNameModal = false;
+      timeLeft = null;
       selectedSliceIds.clear();
+      usedKeys.clear();
+      usedFractionTypes.clear();
+      groupPanel.classList.remove("show");
+      clearSvg(pizzaSvg);
+      renderPlate();
+      orderFraction.innerHTML = "";
+      customerDialogue.textContent = "";
+      servedCount.textContent = "0";
+      servedEquation.innerHTML = "";
       renderTickets();
+      updateTop();
+      syncActionButtons();
       showLevelIntro(levelNo);
     }
 
     function resetGameFlow(){
+      stopTimer();
       currentLevel = 1;
       currentQuestionNumber = 1;
       currentLevelScore = 0;
+      currentQuestion = null;
+      currentCustomer = null;
+      questionResolved = false;
+      pausedByNameModal = false;
+      timeLeft = null;
       selectedSliceIds.clear();
       usedKeys.clear();
+      usedFractionTypes.clear();
       streak = 0;
       bestStreakRound = 0;
       hintsUsed = 0;
@@ -1950,19 +1963,21 @@
     }
 
     function showLevelIntro(levelNo){
+      dashboard.classList.remove("show");
+      teacherPanel.classList.remove("show");
       const lv = levels[levelNo];
       let difficultyText = "";
 
       if(levelNo === 1){
-        difficultyText = "This is the easiest level. Use it to learn the game.";
-      }else if(levelNo === 2){
-        difficultyText = "Assessment starts here. Questions are still manageable, but now your score counts.";
-      }else if(levelNo === 3){
-        difficultyText = "This level is harder because tougher fractions appear and the timer starts.";
-      }else if(levelNo === 4){
-        difficultyText = "This is the hardest assessment level with the most demanding fraction questions.";
-      }else{
-        difficultyText = "This is a bonus rush mode for fun. There are 10 questions. Score above 8 marks to unlock the secret easter egg. It does not change your SLS score.";
+        difficultyText = "This is the easiest level. Every fraction type in this level will appear once.";
+      } else if(levelNo === 2){
+        difficultyText = "The main challenge starts here. Every fraction type in this level will appear once.";
+      } else if(levelNo === 3){
+        difficultyText = "This level is harder because tougher fractions appear and the timer starts. Every fraction type in this level will appear once.";
+      } else if(levelNo === 4){
+        difficultyText = "This is the hardest main challenge level. All 7 fraction types in this level will appear.";
+      } else {
+        difficultyText = "This is a bonus rush mode for fun. There are 10 questions. All 7 fraction types will appear, then some will repeat. Score above 8 marks to unlock the secret easter egg.";
       }
 
       levelIntroTitle.textContent = lv.name;
@@ -1976,18 +1991,25 @@
         Slice counts: ${lv.slices.join(", ")}<br>
         ${lv.timer ? `Timer: ${lv.timer} seconds<br>` : "Timer: None<br>"}
         <br>
-        <strong>${lv.counted ? "This level counts for SLS." : "This level does not count for SLS."}</strong>
+        <strong>${lv.counted ? "This level counts toward your final score." : "This level does not count toward your final score."}</strong>
         ${lv.bonus ? "<br><strong>Bonus only.</strong>" : ""}
       `;
       levelIntroModal.classList.add("show");
       updateTop();
+      syncActionButtons();
     }
 
-    function openNameModal(prefill=""){
+    function openNameModal(prefill="", pauseActiveRound=false){
       refreshLastUserBox();
       playerNameInput.value = prefill;
+      if (pauseActiveRound && currentQuestion && !questionResolved && effectiveTimer() && timerInterval) {
+        stopTimer();
+        pausedByNameModal = true;
+      } else {
+        pausedByNameModal = false;
+      }
       nameModal.classList.add("show");
-      setTimeout(()=>playerNameInput.focus(), 50);
+      setTimeout(()=>playerNameInput.focus(),50);
     }
 
     function savePlayerAndContinue(){
@@ -1996,28 +2018,50 @@
       nameModal.classList.remove("show");
 
       if(coverScreen.classList.contains("hidden")){
-        showLevelIntro(currentLevel);
+        if(!currentQuestion && currentQuestionNumber === 1 && !roundModal.classList.contains("show") && !levelIntroModal.classList.contains("show")){
+          renderTickets();
+          updateTop();
+          syncActionButtons();
+          showLevelIntro(currentLevel);
+        } else {
+          feedback.className = "feedback";
+          feedback.textContent = `Player changed to ${name}.`;
+          if(pausedByNameModal && currentQuestion && !questionResolved){
+            pausedByNameModal = false;
+            resumeTimer();
+          }
+        }
       }
     }
 
+    function fitApp(){
+      const designW = 1780;
+      const designH = 980;
+      const pad = 12;
+      const scale = Math.min(
+        (window.innerWidth - pad) / designW,
+        (window.innerHeight - pad) / designH
+      );
+      document.documentElement.style.setProperty("--app-scale", Math.min(1, scale).toFixed(4));
+    }
+
     document.getElementById("coverStartBtn").addEventListener("click", ()=>{
-      unlockAudio(true);
+      unlockAudio();
+      playOpeningLoop();
       document.body.classList.remove("cover-open");
       coverScreen.classList.add("hidden");
-      fitDesktopApp();
+      fitApp();
       openNameModal();
     });
 
     document.getElementById("saveNameBtn").addEventListener("click", savePlayerAndContinue);
-
     document.getElementById("useLastNameBtn").addEventListener("click", ()=>{
       playerNameInput.value = getPlayerName() || "Chef";
       savePlayerAndContinue();
     });
 
     document.getElementById("changeUserBtn").addEventListener("click", ()=>{
-      stopTimer();
-      openNameModal(getPlayerName());
+      openNameModal(getPlayerName(), true);
     });
 
     playerNameInput.addEventListener("keydown", (e)=>{
@@ -2030,37 +2074,60 @@
       loadQuestion();
     });
 
-    document.getElementById("checkBtn").addEventListener("click", checkAnswer);
+    checkBtn.addEventListener("click", checkAnswer);
 
-    document.getElementById("clearBtn").addEventListener("click", ()=>{
+    clearBtn.addEventListener("click", ()=>{
       if(!currentQuestion) return;
+      if(questionResolved){
+        feedback.className = "feedback";
+        feedback.textContent = "This order is already locked. Press Next Order.";
+        return;
+      }
       renderPizza();
       feedback.className = "feedback";
       feedback.textContent = "Selection cleared.";
       chefBubble.textContent = "Choose the pieces again, then press Check.";
     });
 
-    document.getElementById("nextBtn").addEventListener("click", nextQuestion);
-    document.getElementById("hintBtn").addEventListener("click", showHint);
+    nextBtn.addEventListener("click", nextQuestion);
+    hintBtn.addEventListener("click", showHint);
 
     document.getElementById("soundToggle").addEventListener("click", ()=>{
       soundOn = !soundOn;
       document.getElementById("soundToggle").textContent = soundOn ? "🔊 Sound: On" : "🔇 Sound: Off";
-      if(soundOn && !coverScreen.classList.contains("hidden")){
-        playOpeningLoop();
-      }
-      if(!soundOn){
+      if(soundOn){
+        unlockAudio();
+        if(!coverScreen.classList.contains("hidden")) playOpeningLoop();
+      } else {
         stopOpeningLoop();
       }
     });
 
-    document.getElementById("dashboardToggle").addEventListener("click", ()=>dashboard.classList.toggle("show"));
-    document.getElementById("closeDashboardBtn").addEventListener("click", ()=>{
-      dashboard.classList.remove("show");
+    document.getElementById("dashboardToggle").addEventListener("click", ()=>{
+      teacherPanel.classList.remove("show");
+      dashboard.classList.toggle("show");
     });
-    document.getElementById("teacherToggle").addEventListener("click", ()=>teacherPanel.classList.toggle("show"));
+
+    document.getElementById("teacherToggle").addEventListener("click", ()=>{
+      dashboard.classList.remove("show");
+      teacherPanel.classList.toggle("show");
+    });
+
     document.getElementById("closeTeacherBtn").addEventListener("click", ()=>teacherPanel.classList.remove("show"));
+    document.getElementById("closeDashboardBtn").addEventListener("click", ()=>dashboard.classList.remove("show"));
     document.getElementById("clearScoreLogBtn").addEventListener("click", clearScoreLog);
+
+    document.addEventListener("click", (e)=>{
+      if(e.target && e.target.id === "closeEasterEggBtn"){
+        easterEggBox.classList.remove("show");
+      }
+    });
+
+    document.getElementById("teacherClearSessionBtn").addEventListener("click", ()=>{
+      if(confirm("Teacher only:\nStart a completely new session for this activity?")){
+        location.reload();
+      }
+    });
 
     document.querySelectorAll(".teacher-opt").forEach(btn=>{
       btn.addEventListener("click", ()=>{
@@ -2079,6 +2146,10 @@
       });
     });
 
+    window.addEventListener("pointerdown", unlockAudio, { once:true });
+    window.addEventListener("keydown", unlockAudio, { once:true });
+    window.addEventListener("touchstart", unlockAudio, { once:true, passive:true });
+
     window.addEventListener("wheel", (e)=>{
       if(e.ctrlKey) e.preventDefault();
     }, {passive:false});
@@ -2087,20 +2158,19 @@
       if((e.ctrlKey || e.metaKey) && ["+","-","=","_","0"].includes(e.key)) e.preventDefault();
     }, {passive:false});
 
-    setXapiStatus();
     bestScoreText.textContent = getBestScore();
     bestStreakText.textContent = getBestStreak();
     playerNameText.textContent = getPlayerName() || "Chef";
     dashPlayer.textContent = getPlayerName() || "Chef";
     renderScoreLog();
-    updateTop();
-    renderPlate();
     renderTickets();
-    fitDesktopApp();
+    renderPlate();
+    updateTop();
+    fitApp();
+    syncActionButtons();
 
-    window.addEventListener("resize", fitDesktopApp);
-    window.addEventListener("orientationchange", fitDesktopApp);
-    window.addEventListener("pageshow", fitDesktopApp);
+    window.addEventListener("resize", fitApp);
+    window.addEventListener("pageshow", fitApp);
   </script>
 </body>
 </html>
