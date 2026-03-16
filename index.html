@@ -477,13 +477,14 @@
     }
 
     .center{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:space-between;
-      gap:8px;
-      height:100%;
-    }
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px;
+  height:100%;
+  overflow:hidden;
+}
 
     .pizza-stage{
       position:relative;
@@ -590,13 +591,16 @@
     }
 
     .plate-zone{
-      width:min(100%,900px);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:4px;
-      flex:0 0 auto;
-    }
+  width:min(100%,920px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  flex:1 1 auto;
+  justify-content:flex-start;
+  overflow:hidden;
+  margin-top:4px;
+}
 
     .plate-wrap{
       width:360px;
